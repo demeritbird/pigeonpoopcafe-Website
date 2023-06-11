@@ -1,0 +1,15 @@
+{
+  "name": "pigeonpoopcafe-website",
+  "version": "0.1.0",
+  "description": "an angular/golang full stack for personal website",
+  "scripts": {
+    "start:client": "npm --prefix ./client run ng serve --open",
+    "start:server": "cd server && go run ./cmd/api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/demeritbird/pigeonpoopcafe-Website.git"
+  },
+  "author": "demeritbird",
+  "license": "ISC"
+}
