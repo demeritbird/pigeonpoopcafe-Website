@@ -8,10 +8,18 @@ import (
 
 const port = 8080
 
+type application struct {
+	Domain string
+}
+
 func main() {
 	//// Set Application Config ////
+	var app application
 
 	//// Read from Command Line ////
+	app.Domain = "example.com"
+
+	http.HandleFunc("/", ping)
 
 	//// Connect to the Database ////
 
