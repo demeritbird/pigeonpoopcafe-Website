@@ -19,13 +19,11 @@ func main() {
 	//// Read from Command Line ////
 	app.Domain = "example.com"
 
-	http.HandleFunc("/", ping)
-
 	//// Connect to the Database ////
 
 	//// Start a Web Server ////'
 	log.Println("Starting application on port", port)
-	err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
+	err := http.ListenAndServe(fmt.Sprintf(":%d", port), app.routes())
 	if err != nil {
 		log.Fatal(err)
 	}
