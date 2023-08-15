@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "an angular/golang full stack for personal website",
   "scripts": {
-    "start:client": "npm --prefix ./client run ng serve --open",
-    "start:server": "cd server && go run ./cmd/api"
+    "start:client": "npm --prefix ./client run ng -- serve --open",
+    "start:server": "cd server && docker-compose up -d && go run ./cmd/api"
   },
   "repository": {
     "type": "git",
