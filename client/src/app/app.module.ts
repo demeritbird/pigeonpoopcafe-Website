@@ -9,6 +9,9 @@ import { AboutSectionComponent } from './sections/about-section/about-section.co
 import { ExperienceProjectsSectionComponent } from './sections/experience-projects-section/experience-projects-section.component';
 import { ArtworksSectionComponent } from './sections/artworks-section/artworks-section.component';
 import { FooterSectionComponent } from './sections/footer-section/footer-section.component';
+import { ProfileImageComponent } from './components/profile-image/profile-image.component';
+import { LinkIconTrayComponent } from './components/link-icon-tray/link-icon-tray.component';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { FooterSectionComponent } from './sections/footer-section/footer-section
     AboutSectionComponent,
     ExperienceProjectsSectionComponent,
     ArtworksSectionComponent,
-    FooterSectionComponent
+    FooterSectionComponent,
+    ProfileImageComponent,
+    LinkIconTrayComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
