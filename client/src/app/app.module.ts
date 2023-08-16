@@ -12,6 +12,7 @@ import { FooterSectionComponent } from './sections/footer-section/footer-section
 import { ProfileImageComponent } from './components/profile-image/profile-image.component';
 import { LinkIconTrayComponent } from './components/link-icon-tray/link-icon-tray.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { ExperiencesSectionComponent } from './sections/coding-section/experiences-section/experiences-section.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
     ProfileImageComponent,
     LinkIconTrayComponent,
     NavigationBarComponent,
+    ExperiencesSectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
