@@ -1,6 +1,6 @@
 @use "./../../../styles/main.scss" as *;
 
-$section-overlap-buffer: 20rem;
+$section-overlap-buffer: 30rem;
 $section-body-height: 44rem;
 $section-body-width: 102.4rem;
 
@@ -8,7 +8,7 @@ $body-text-width-perc: 55%;
 
 .about {
   &__background {
-    height: 112rem;
+    height: 135rem;
     width: 100%;
     margin-top: -$section-overlap-buffer;
     margin-bottom: -$section-overlap-buffer;
