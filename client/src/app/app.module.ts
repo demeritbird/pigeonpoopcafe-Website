@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BaseLayoutComponent } from './base-layout/base-layout.component';
 import { HeroSectionComponent } from './sections/hero-section/hero-section.component';
 import { AboutSectionComponent } from './sections/about-section/about-section.component';
-import { ExperienceProjectsSectionComponent } from './sections/experience-projects-section/experience-projects-section.component';
+import { CodingSectionComponent } from './sections/coding-section/coding-section.component';
 import { ArtworksSectionComponent } from './sections/artworks-section/artworks-section.component';
 import { FooterSectionComponent } from './sections/footer-section/footer-section.component';
 import { ProfileImageComponent } from './components/profile-image/profile-image.component';
@@ -19,18 +19,15 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
     BaseLayoutComponent,
     HeroSectionComponent,
     AboutSectionComponent,
-    ExperienceProjectsSectionComponent,
+    CodingSectionComponent,
     ArtworksSectionComponent,
     FooterSectionComponent,
     ProfileImageComponent,
     LinkIconTrayComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
