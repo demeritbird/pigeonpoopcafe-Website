@@ -31,3 +31,11 @@
     background-size: cover;
   }
 }
+
+.divider-line {
+  height: 0.2rem;
+  width: 40rem;
+  border-radius: 1rem;
+  background-color: rgba($color-grey-light-2, 0.5);
+  margin: 10rem auto;
+}

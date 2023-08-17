@@ -13,6 +13,7 @@ import { ProfileImageComponent } from './components/profile-image/profile-image.
 import { LinkIconTrayComponent } from './components/link-icon-tray/link-icon-tray.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { ExperiencesSectionComponent } from './sections/coding-section/experiences-section/experiences-section.component';
+import { ProjectsSectionComponent } from './sections/coding-section/projects-section/projects-section.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ExperiencesSectionComponent } from './sections/coding-section/experienc
     LinkIconTrayComponent,
     NavigationBarComponent,
     ExperiencesSectionComponent,
+    ProjectsSectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

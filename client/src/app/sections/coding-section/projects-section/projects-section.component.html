@@ -1,0 +1,72 @@
+<div class="u-center-text u-margin-bottom--tiny">
+  <h2 class="heading-secondary experiences__header-text">Projects</h2>
+</div>
+<div class="u-center-text u-margin-bottom--medium">
+  <p class="body-medium--italic experiences__caption-text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+</div>
+<div class="carousel u-margin-bottom--large">
+  <div>
+    <div class="slider">
+      <button
+        class="slider__btn slider__btn--left"
+        [ngClass]="{ 'slider__btn--dormant': isFirstPage }"
+        (click)="prevSlide()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2.4"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
+        </svg>
+      </button>
+
+      <div class="slider__screen">
+        <div class="slide">
+          <div>block message</div>
+        </div>
+
+        <div class="slide">
+          <div>block message</div>
+          `
+        </div>
+
+        <div class="slide">
+          <div>block message</div>
+        </div>
+      </div>
+
+      <button
+        class="slider__btn slider__btn--right"
+        [ngClass]="{ 'slider__btn--dormant': isLastPage }"
+        (click)="nextSlide()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2.4"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="dots" (click)="dotClick($event)"></div>
+</div>
