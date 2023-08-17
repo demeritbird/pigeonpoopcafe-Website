@@ -1,0 +1,30 @@
+.u-center-text {
+  text-align: center !important;
+}
+
+.u-margin-bottom {
+  &--tiny {
+    margin-bottom: 0.4rem !important;
+  }
+  &--small {
+    margin-bottom: 1.6rem !important;
+  }
+  &--medium {
+    margin-bottom: 3.2rem !important;
+  }
+  &--large {
+    margin-bottom: 8rem !important;
+  }
+}
+
+.u-margin-top {
+  &--medium {
+    margin-top: 3.2rem !important;
+  }
+  &--large {
+    margin-top: 8rem !important;
+  }
+  &--huge {
+    margin-top: 10rem !important;
+  }
+}

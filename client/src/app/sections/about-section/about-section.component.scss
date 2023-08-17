@@ -1,0 +1,59 @@
+@use "./../../../styles/main.scss" as *;
+
+$section-overlap-buffer: 30rem;
+$section-body-height: 44rem;
+$section-body-width: 102.4rem;
+
+$body-text-width-perc: 55%;
+
+.about {
+  &__background {
+    height: 135rem;
+    width: 100%;
+    margin-top: -$section-overlap-buffer;
+    margin-bottom: -$section-overlap-buffer;
+    padding: $section-overlap-buffer 0;
+
+    background-color: $color-grey-light-1;
+  }
+
+  &__header-text {
+    color: $color-primary;
+  }
+}
+
+.about {
+  &__body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    height: $section-body-height;
+    width: $section-body-width;
+    margin: 0 auto;
+
+    &-text-container {
+      flex-basis: $body-text-width-perc;
+      @include flex-center;
+    }
+    &-text {
+      @include flex-center;
+      height: 100%;
+      width: 38.2rem;
+
+      color: $color-grey-dark-2;
+      line-height: 1.4;
+    }
+
+    &-image-container {
+      flex-basis: calc(100% - $body-text-width-perc);
+      @include flex-center;
+    }
+    &-image {
+      height: 37.5rem;
+      width: 35rem;
+
+      border-radius: 3.2rem;
+    }
+  }
+}

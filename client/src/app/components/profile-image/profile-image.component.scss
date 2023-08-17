@@ -1,0 +1,12 @@
+@use "./../../../styles/main.scss" as *;
+
+$profile-picture-diameter: 29.2rem;
+$profile-border-diameter: 30rem - $profile-picture-diameter;
+
+.profile-picture {
+  height: $profile-picture-diameter;
+  width: $profile-picture-diameter;
+
+  border-radius: 50%;
+  border: $profile-border-diameter solid $color-white;
+}
