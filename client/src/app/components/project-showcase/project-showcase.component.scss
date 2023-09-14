@@ -1,0 +1,133 @@
+@use "./../../../styles/main.scss" as *;
+
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  display: block;
+
+  height: 100%;
+  width: 100%;
+}
+
+.cover {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  height: 54rem;
+  width: 68rem;
+
+  top: 0;
+  left: 0;
+
+  &__image-holder {
+    position: relative;
+
+    height: 44rem;
+    width: 100%;
+
+    background-color: $color-primary-dark-2;
+    border-width: 0 0 1.6rem 1.6rem;
+    border-style: solid;
+    border-color: $color-primary-dark-2;
+    border-radius: 4.4rem 0 4.4rem 0;
+
+    overflow: hidden;
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+  }
+
+  &__title-holder {
+    position: absolute;
+
+    height: 44rem;
+    width: 100%;
+
+    top: 0;
+    bottom: -1rem;
+    left: 0;
+  }
+
+  &__title {
+    position: absolute;
+    display: inline-block;
+
+    max-width: 40rem;
+    bottom: 0rem;
+    left: -0.8rem;
+
+    line-height: 110%;
+    color: $color-white;
+
+    z-index: 2;
+  }
+}
+
+.description {
+  position: absolute;
+
+  height: 42rem;
+  width: 56rem;
+  bottom: 0;
+  right: 0;
+
+  z-index: 3;
+
+  &__prompt {
+    cursor: pointer;
+    display: inline-block;
+
+    height: 3.2rem;
+    width: 100%;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 2.15rem;
+    font-style: italic;
+    text-decoration: underline;
+    color: $color-primary;
+    text-align: end;
+    vertical-align: text-bottom;
+  }
+
+  &__container {
+    height: 38.8rem;
+    width: 100%;
+
+    border-radius: 3.2rem;
+    background: linear-gradient(90deg, rgba($color-grey-dark-1, 0.8) 0.6%, rgba($color-grey-dark-1, 0) 72.85%);
+    padding: 2.8rem 0.4rem 2.8rem 3.2rem;
+  }
+
+  &__text {
+    color: $color-grey-light-1;
+    font-style: italic;
+    line-height: 115%;
+  }
+
+  &__text-mask {
+    overflow: scroll;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+
+    mask-image: linear-gradient(transparent, black 4%, black 96%, transparent 100%),
+      linear-gradient(to left, black 5px, transparent 6px); /* this prevents scroll bar from being masked. */
+    -webkit-mask-image: linear-gradient(transparent, black 4%, black 96%, transparent 100%),
+      linear-gradient(to left, black 5px, transparent 6px);
+
+    mask-size: 100% 100%;
+    mask-position:
+      0 0,
+      100% 0;
+    mask-repeat: no-repeat, no-repeat;
+  }
+}
