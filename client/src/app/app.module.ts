@@ -15,6 +15,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { ExperiencesSectionComponent } from './sections/coding-section/experiences-section/experiences-section.component';
 import { ProjectsSectionComponent } from './sections/coding-section/projects-section/projects-section.component';
 import { ProjectShowcaseComponent } from './components/project-showcase/project-showcase.component';
+import { LanguageTagComponent } from './components/language-tag/language-tag.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProjectShowcaseComponent } from './components/project-showcase/project-
     ExperiencesSectionComponent,
     ProjectsSectionComponent,
     ProjectShowcaseComponent,
+    LanguageTagComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
