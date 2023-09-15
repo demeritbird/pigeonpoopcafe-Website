@@ -10,10 +10,11 @@
     <div class="cover__title-holder">
       <h2 class="cover__title showcase-title">Perchpals Platform</h2>
     </div>
-    <app-language-tag languageName="typescript"></app-language-tag>
-    <app-language-tag languageName="scss"></app-language-tag>
-    <app-language-tag languageName="mongodb"></app-language-tag>
-    <app-language-tag languageName="expressjs"></app-language-tag>
+    <div class="cover__languages-grid">
+      <ng-container *ngFor="let languageName of languageNameArr">
+        <app-language-tag [languageName]="languageName"></app-language-tag>
+      </ng-container>
+    </div>
   </div>
   <div class="description">
     <p class="description__prompt"><span>Find out more</span> &#8599;</p>

@@ -10,7 +10,7 @@ enum LanguagesColor {
   golang = '#29beb0',
 }
 
-type LanguagesColorKey = keyof typeof LanguagesColor;
+export type LanguagesColorKey = keyof typeof LanguagesColor;
 
 @Component({
   selector: 'app-language-tag',
