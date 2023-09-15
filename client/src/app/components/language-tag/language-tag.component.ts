@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, Renderer2, OnInit } from '@angular/core';
 
 enum LanguagesColor {
   typescript = '#3178C6',
@@ -17,23 +17,30 @@ type LanguagesColorKey = keyof typeof LanguagesColor;
   templateUrl: './language-tag.component.html',
   styleUrls: ['./language-tag.component.scss'],
 })
-export class LanguageTagComponent {
+export class LanguageTagComponent implements OnInit {
   @Input() languageName: LanguagesColorKey = 'typescript';
   languageValue: LanguagesColor = LanguagesColor['typescript'];
-  containerElement: Element | null = null;
 
   isContainerDarkBackgroundColor: boolean | null = null;
 
-  ngOnInit() {
-    this.containerElement = document.querySelector('.language-container');
-    (this.containerElement as HTMLElement).style.backgroundColor =
-      this.languageValue;
-    this.isContainerDarkBackgroundColor = this.hexToRgb(this.languageValue);
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
+  ngOnInit() {
+    this.languageValue = LanguagesColor[this.languageName];
+    const containerElement = this.el.nativeElement.querySelector(
+      '.language-container'
+    );
+    this.renderer.setStyle(
+      containerElement,
+      'backgroundColor',
+      this.languageValue
+    );
+
+    this.isContainerDarkBackgroundColor = this.hexToRgb(this.languageValue);
     if (this.isContainerDarkBackgroundColor) {
-      (this.containerElement as HTMLElement).style.color = '#1a1a1a'; // $color-grey-dark-2
+      (containerElement as HTMLElement).style.color = '#1a1a1a'; // $color-grey-dark-2
     } else {
-      (this.containerElement as HTMLElement).style.color = '#f6f6f6'; // $color-grey-dark-1
+      (containerElement as HTMLElement).style.color = '#f6f6f6'; // $color-grey-dark-1
     }
   }
 
