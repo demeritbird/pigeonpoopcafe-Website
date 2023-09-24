@@ -14,6 +14,9 @@ import { LinkIconTrayComponent } from './components/link-icon-tray/link-icon-tra
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { ExperiencesSectionComponent } from './sections/coding-section/experiences-section/experiences-section.component';
 import { ProjectsSectionComponent } from './sections/coding-section/projects-section/projects-section.component';
+import { ProjectShowcaseComponent } from './components/project-showcase/project-showcase.component';
+import { LanguageTagComponent } from './components/language-tag/language-tag.component';
+import { ArtworkContainerComponent } from './components/artwork-container/artwork-container.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { ProjectsSectionComponent } from './sections/coding-section/projects-sec
     NavigationBarComponent,
     ExperiencesSectionComponent,
     ProjectsSectionComponent,
+    ProjectShowcaseComponent,
+    LanguageTagComponent,
+    ArtworkContainerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

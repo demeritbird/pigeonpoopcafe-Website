@@ -26,20 +26,15 @@
   &__screen {
     position: relative;
 
-    height: 64rem;
+    height: 58rem;
     width: 120rem;
     max-height: 100%;
     max-width: 100%;
 
     margin: 0 auto;
 
-    mask-image:
-      linear-gradientto left,
-      (transparent, black 20%, black 80%, transparent 100%),
-      linear-gradient(to left, black 5px, transparent 6px); /* this prevents scroll bar from being masked. */
-    -webkit-mask-image: linear-gradient(to left, transparent, black 20%, black 80%, transparent 100%),
-      linear-gradient(to left, black 5px, transparent 6px);
-    mask-size: 100% 100%;
+    mask-image: linear-gradient(to left, transparent, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, transparent, black 12%, black 88%, transparent 100%);
     mask-position:
       0 0,
       100% 0;

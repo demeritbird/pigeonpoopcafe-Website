@@ -1,3 +1,5 @@
+@use "./../abstracts/variables" as *;
+
 .u-center-text {
   text-align: center !important;
 }
@@ -26,5 +28,17 @@
   }
   &--huge {
     margin-top: 10rem !important;
+  }
+}
+
+.u-drop-shadow {
+  &--small {
+    box-shadow: 0px 0.4rem 1.6rem rgba($color-black, 0.25);
+  }
+  &--medium {
+    box-shadow: 0px 1.2rem 2.4rem rgba($color-black, 0.25);
+  }
+  &--large {
+    box-shadow: 0px 2.4rem 4.8rem rgba($color-black, 0.25);
   }
 }

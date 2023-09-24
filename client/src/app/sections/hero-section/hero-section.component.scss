@@ -1,5 +1,13 @@
 @use "./../../../styles/main.scss" as *;
 
+.shadow {
+  filter: drop-shadow(0 2.4rem 4.8rem rgba($color-black, 0.25));
+  &__overlay {
+    overflow-y: visible;
+    overflow-x: clip;
+  }
+}
+
 .hero {
   &__background {
     height: 93.5rem;

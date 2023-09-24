@@ -1,0 +1,20 @@
+@use "./../../../styles/main.scss" as *;
+
+.language-container {
+  @include flex-center;
+
+  height: 2rem;
+  width: 12rem;
+  background-color: $color-white;
+
+  border-radius: 1.6rem;
+
+  font-family: "Rubik";
+  font-size: 1.333rem;
+  font-weight: 700;
+  color: $color-grey-dark-2;
+  text-transform: uppercase;
+
+  margin-right: 1.2rem;
+  margin-bottom: 0.4rem;
+}
