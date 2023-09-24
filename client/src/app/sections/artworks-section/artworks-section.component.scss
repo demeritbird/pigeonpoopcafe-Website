@@ -2,7 +2,7 @@
 
 .artworks {
   &__background {
-    height: 116rem;
+    height: 132rem;
     width: 100%;
     padding-top: 3.2rem;
 
@@ -17,5 +17,10 @@
     margin: 0 auto;
 
     color: $color-grey-dark-1;
+  }
+
+  &__showcase {
+    @include flex-center;
+    flex-direction: column;
   }
 }
