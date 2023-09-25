@@ -1,10 +1,19 @@
 <div class="layout__background">
   <div class="layout__svg">
     <div class="layout__main">
-      <app-hero-section></app-hero-section>
-      <app-about-section></app-about-section>
-      <app-coding-section></app-coding-section>
-      <app-artworks-section></app-artworks-section>
+      <app-navigation-bar
+        *ngIf="isStickyNav"
+        [isStickyNav]="true"
+        [sectionRefObj]="sectionRefObj"
+        @navFade
+      ></app-navigation-bar>
+      <app-hero-section
+        [sectionRefObj]="sectionRefObj"
+        (emitIsStickyNav)="changeStickyNavDisplay($event)"
+      ></app-hero-section>
+      <app-about-section #about_section_ref></app-about-section>
+      <app-coding-section #coding_section_ref></app-coding-section>
+      <app-artworks-section #artworks_section_ref></app-artworks-section>
       <app-footer-section></app-footer-section>
     </div>
   </div>

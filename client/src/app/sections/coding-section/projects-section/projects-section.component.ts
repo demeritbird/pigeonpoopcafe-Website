@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-projects-section',
@@ -6,6 +6,8 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
   styleUrls: ['./projects-section.component.scss'],
 })
 export class ProjectsSectionComponent {
+  @ViewChild('projects_section_ref') projectsSectionRef!: ElementRef;
+
   slides: NodeListOf<Element> | null = null;
   btnLeft: Element | null = null;
   btnRight: Element | null = null;
@@ -19,6 +21,12 @@ export class ProjectsSectionComponent {
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
 
   ngAfterViewInit() {
+    const refEvent: CustomEvent = new CustomEvent('projectsSectionRefEvent', {
+      bubbles: true,
+      detail: { data: this.projectsSectionRef },
+    });
+    this.elementRef.nativeElement.dispatchEvent(refEvent);
+
     this.slides = document.querySelectorAll('.slide');
     this.btnLeft = document.querySelector('.slider__btn--left');
     this.btnRight = document.querySelector('.slider__btn--right');

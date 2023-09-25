@@ -1,20 +1,34 @@
-<nav class="navigation u-margin-bottom--small">
+<nav class="navigation u-margin-bottom--small" #nav_ref>
   <ul class="navigation__tray">
     <li class="navigation__list">
-      <a href="#" class="navigation-text--inactive navigation__link">about</a>
+      <a
+        href="#"
+        class="navigation-text--inactive navigation__link"
+        (click)="onClickAbout($event)"
+        >about</a
+      >
     </li>
     <li class="navigation__list">
-      <a href="#" class="navigation-text--inactive navigation__link"
+      <a
+        href="#"
+        class="navigation-text--inactive navigation__link"
+        (click)="onClickExperience($event)"
         >experience</a
       >
     </li>
     <li class="navigation__list">
-      <a href="#" class="navigation-text--inactive navigation__link"
+      <a
+        href="#"
+        class="navigation-text--inactive navigation__link"
+        (click)="onClickProjects($event)"
         >projects</a
       >
     </li>
     <li class="navigation__list">
-      <a href="#" class="navigation-text--inactive navigation__link"
+      <a
+        href="#"
+        class="navigation-text--inactive navigation__link"
+        (click)="onClickArtworks($event)"
         >artworks</a
       >
     </li>
