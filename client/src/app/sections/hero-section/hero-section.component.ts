@@ -4,6 +4,7 @@ import {
   ElementRef,
   ViewChild,
   EventEmitter,
+  Input,
   Output,
 } from '@angular/core';
 
@@ -14,6 +15,7 @@ import {
 })
 export class HeroSectionComponent implements OnInit {
   @ViewChild('hero_ref', { static: true }) heroView!: ElementRef;
+  @Input() sectionRefObj: Record<string, ElementRef> = {};
   STICKY_THRESHOLD: number = 0.2;
   @Output() emitIsStickyNav: EventEmitter<boolean> = new EventEmitter(false);
 

@@ -15,6 +15,7 @@ import {
 export class NavigationBarComponent implements OnInit {
   @ViewChild('nav_ref', { static: true }) navView!: ElementRef;
   @Input() isStickyNav: boolean = false;
+  @Input() sectionRefObj: Record<string, ElementRef> = {};
 
   constructor(private renderer: Renderer2) {}
 
@@ -27,5 +28,27 @@ export class NavigationBarComponent implements OnInit {
         'navigation--sticky'
       );
     }
+  }
+
+  onClickAbout(event: MouseEvent) {
+    event.preventDefault();
+    this.smoothScroll(this.sectionRefObj['about']);
+  }
+  onClickExperience(event: MouseEvent) {
+    event.preventDefault();
+    this.smoothScroll(this.sectionRefObj['experience']);
+  }
+  onClickProjects(event: MouseEvent) {
+    event.preventDefault();
+    this.smoothScroll(this.sectionRefObj['projects']);
+  }
+  onClickArtworks(event: MouseEvent) {
+    event.preventDefault();
+    this.smoothScroll(this.sectionRefObj['artworks']);
+  }
+  smoothScroll(el: ElementRef) {
+    el.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+    });
   }
 }
