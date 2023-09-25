@@ -2,21 +2,21 @@
 
 ## Description
 
-_(I hope this gets finished someday lol.)_
+A simple Angular & Go stack personal website for demeritbird.
 
 ## Getting Started
 
-### Client
+### Pre-Requisites
 
-Inside 'Client' folder,
+1. You will first need to have .env files with relevant information in _./server_ directory.
 
-- Run `ng serve` in a terminal.
-- Enter http://localhost:4200 to view website.
+2. You will also need to have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running before working with the server.
 
-### Server
+### How to Run
 
-Inside 'Server' folder,
+- Run `npm run start:client` in root directory to start Angular on http://localhost:4200.
+- Run `npm run start:server` in root directory (on another terminal) to start Go on port 8080 / Postgres on port 5432.
 
-- Run `docker-compose up -d` in another terminal.  
-  (Before closing terminal, run `docker-compose down` in the same location)
-- Then run `go run ./cmd/api`.
+### How to Shutdown
+
+- Make sure to run `npm run stop:docker` to remove our docker container!

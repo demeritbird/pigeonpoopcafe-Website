@@ -4,7 +4,9 @@
   "description": "an angular/golang full stack for personal website",
   "scripts": {
     "start:client": "npm --prefix ./client run ng -- serve --open",
-    "start:server": "cd server && docker-compose up -d && go run ./cmd/api"
+    "start:server": "cd server && docker-compose up -d && go run ./cmd/api",
+    "start:docker": "cd server && docker-compose up -d",
+    "stop:docker": "cd server && docker-compose down"
   },
   "repository": {
     "type": "git",
