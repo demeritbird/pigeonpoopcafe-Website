@@ -1,5 +1,9 @@
 @use "./../../styles/main.scss" as *;
 
+.miao {
+  transition: 1s all;
+}
+
 .layout {
   &__background {
     height: 100%;

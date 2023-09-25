@@ -1,24 +1,32 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-hero-section',
   templateUrl: './hero-section.component.html',
   styleUrls: ['./hero-section.component.scss'],
 })
-export class HeroSectionComponent {
+export class HeroSectionComponent implements OnInit {
   @ViewChild('hero_ref', { static: true }) heroView!: ElementRef;
   STICKY_THRESHOLD: number = 0.2;
+  @Output() emitIsStickyNav: EventEmitter<boolean> = new EventEmitter(false);
 
   ngOnInit() {
     this.initStickyObserver();
   }
 
   initStickyObserver() {
-    const obsCallback: IntersectionObserverCallback = function (
+    const obsCallback: IntersectionObserverCallback = (
       entries: IntersectionObserverEntry[],
-      observer: IntersectionObserver
-    ) {
-      // TODO: Add sticky navigation callback
+      _
+    ) => {
+      this.emitIsStickyNav.emit(!entries[0].isIntersecting);
     };
     const options: IntersectionObserverInit = {
       root: null,
