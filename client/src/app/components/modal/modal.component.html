@@ -1,0 +1,16 @@
+<section class="popup" (click)="onCloseClick()">
+  <div class="popup__content" (click)="$event.stopPropagation()">
+    <div class="content-header">
+      <div class="content-header__text">
+        <ng-content select="[modalTitle]"></ng-content>
+      </div>
+      <a class="popup__close" (click)="onCloseClick()">&times;</a>
+    </div>
+    <div class="content__body">
+      <ng-content></ng-content>
+    </div>
+    <div class="content__footer">
+      <ng-content select="[modalFooter]"></ng-content>
+    </div>
+  </div>
+</section>
