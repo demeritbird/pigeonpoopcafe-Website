@@ -1,0 +1,67 @@
+@use "./../../../styles/main.scss" as *;
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: rgba($color-black, 0.8);
+
+  z-index: 3;
+
+  &__content {
+    position: relative;
+
+    width: 40rem;
+    padding: 1.6rem;
+
+    background-color: white;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+    border-radius: 3px;
+
+    overflow: hidden;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0.24rem;
+    right: 0.4rem;
+
+    &:link,
+    &:visited {
+      position: absolute;
+      top: 2.4rem;
+      right: 4.4rem;
+
+      color: $color-black;
+      font-size: 2.8rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+
+      line-height: 1;
+    }
+
+    &:hover {
+      color: $color-black;
+    }
+  }
+}
+
+.content-header {
+  height: 1.6rem;
+  margin-bottom: 2rem;
+
+  &__text {
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+}
+
+.content__footer {
+  display: flex;
+  justify-content: flex-end;
+}

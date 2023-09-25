@@ -19,6 +19,7 @@ import { LanguageTagComponent } from './components/language-tag/language-tag.com
 import { ArtworkContainerComponent } from './components/artwork-container/artwork-container.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProjectShowcaseComponent,
     LanguageTagComponent,
     ArtworkContainerComponent,
+    ModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
