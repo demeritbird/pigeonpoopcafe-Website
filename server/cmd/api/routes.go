@@ -10,11 +10,13 @@ import (
 func (app *application) routes() http.Handler {
 	mux := chi.NewRouter()
 
-	// Middlewares:
+	// Middlewares
 	mux.Use(middleware.Recoverer)
 	mux.Use(app.enableCORS)
 
+	// Routes
 	mux.Get("/", app.ping)
+	mux.Post("/sendGreetingEmail", app.sendGreetingEmail)
 
 	return mux
 }
