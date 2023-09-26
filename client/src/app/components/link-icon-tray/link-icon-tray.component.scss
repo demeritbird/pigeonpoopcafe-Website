@@ -61,6 +61,8 @@ $color-icon-box-background: $color-grey-dark-1;
   }
 
   &:hover {
+    transform: translateY(-1px);
+
     & svg {
       transform: scale(1.1);
       fill: $color-icon-hover;
@@ -70,6 +72,10 @@ $color-icon-box-background: $color-grey-dark-1;
       animation: flash-icon-screen 0.7s 1 forwards;
       transition: 1s;
     }
+  }
+
+  &:active {
+    transform: translateY(0.8px);
   }
 }
 
