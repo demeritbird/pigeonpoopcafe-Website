@@ -31,10 +31,12 @@ $color-icon-box-background: $color-grey-dark-1;
 
   margin: 0 1.6rem;
   border-radius: 30%;
+  border-color: transparent;
 
   background-color: $color-icon-box-background;
 
   overflow: hidden;
+  cursor: pointer;
 
   &__vector {
     height: $icon-length;

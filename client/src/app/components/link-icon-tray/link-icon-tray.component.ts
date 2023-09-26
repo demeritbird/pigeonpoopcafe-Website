@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MailerService } from 'src/app/services/mailer.service';
 
 @Component({
   selector: 'app-link-icon-tray',
@@ -7,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class LinkIconTrayComponent {
   @Input() hasBound: boolean = false;
+
+  constructor(private mailerService: MailerService) {}
+
+  clickMailIconHandler() {
+    this.mailerService.requestMail().subscribe();
+  }
 }

@@ -1,3 +1,3 @@
 export const environment = {
-  SERVER_LINK: 'localhost:8080',
+  SERVER_LINK: 'http://localhost:8080',
 };
