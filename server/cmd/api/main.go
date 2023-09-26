@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"sync"
 
 	"github.com/joho/godotenv"
 )
@@ -14,12 +15,25 @@ import (
 const port = 8080
 
 type application struct {
-	Domain string
-	DSN    string
-	DB     *sql.DB
+	Domain   string
+	DSN      string
+	DB       *sql.DB
+	Mailer   Mail
+	Wait     *sync.WaitGroup
+	InfoLog  *log.Logger
+	ErrorLog *log.Logger
 }
 
 func main() {
+	//// Set Application Config ////
+	var app application
+
+	// Set up loggers
+	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+	app.InfoLog = infoLog
+	app.ErrorLog = errorLog
+
 	// Load env file
 	if os.Getenv("LOCAL_ENV") == "" {
 		err := godotenv.Load()
@@ -27,9 +41,6 @@ func main() {
 			log.Fatal("Error loading .env file")
 		}
 	}
-
-	//// Set Application Config ////
-	var app application
 
 	//// Read from Command Line ////
 	app.Domain = "example.com"
@@ -47,6 +58,13 @@ func main() {
 	app.DB = conn
 	defer app.DB.Close()
 
+	// Set up mailer
+	wg := sync.WaitGroup{}
+	app.Wait = &wg
+
+	app.Mailer = app.createMail()
+	go app.listenForMail()
+
 	//// Start a Web Server ////
 	log.Println("Starting application on port", port)
 	err = http.ListenAndServe(fmt.Sprintf(":%d", port), app.routes())
@@ -54,4 +72,45 @@ func main() {
 		log.Fatal(err)
 	}
 
+}
+
+func (app *application) createMail() Mail {
+	errorChan := make(chan error)
+	mailerChan := make(chan Message, 100)
+	mailerDoneChan := make(chan bool)
+
+	var m Mail
+	if os.Getenv("LOCAL_ENV") == "" {
+		// Create mail using mailhog
+		m = Mail{
+			Domain:      "localhost",
+			Host:        "localhost",
+			Port:        1025,
+			Encryption:  "none",
+			FromName:    "demeritbird",
+			FromAddress: "demeritbird@gmail.com",
+			Wait:        app.Wait,
+			ErrorChan:   errorChan,
+			MailerChan:  mailerChan,
+			DoneChan:    mailerDoneChan,
+		}
+	} else {
+		// Create mail using go-simple-mail
+		m = Mail{
+			Domain:      "smtp.gmail.com",
+			Host:        "smtp.gmail.com",
+			Port:        587,
+			Encryption:  "tls",
+			FromName:    "demeritbird",
+			FromAddress: "demeritbird@gmail.com",
+			Username:    os.Getenv("EMAIL_USER"),
+			Password:    os.Getenv("EMAIL_PASS"),
+			Wait:        app.Wait,
+			ErrorChan:   errorChan,
+			MailerChan:  mailerChan,
+			DoneChan:    mailerDoneChan,
+		}
+	}
+
+	return m
 }
