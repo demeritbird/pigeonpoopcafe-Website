@@ -24,6 +24,7 @@ $transition-time: 0.5s;
 .container:hover {
   & .artwork__image {
     filter: blur(2px);
+    transform: scale(1.02);
   }
 
   & .artwork__textbox {
