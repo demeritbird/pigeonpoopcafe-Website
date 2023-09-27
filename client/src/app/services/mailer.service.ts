@@ -8,7 +8,9 @@ import { environment } from './../../environments/environment';
 export class MailerService {
   constructor(private http: HttpClient) {}
 
-  requestMail() {
-    return this.http.post(`${environment.SERVER_LINK}/sendGreetingEmail`, {});
+  requestMail(email: string) {
+    return this.http.post(`${environment.SERVER_LINK}/sendGreetingEmail`, {
+      email,
+    });
   }
 }
