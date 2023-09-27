@@ -1,3 +1,37 @@
+<app-modal *ngIf="modalOpen" (close)="onModalToggle()">
+  <div modalTitle>Let's Chat via Email!</div>
+
+  <form #emailForm="ngForm" class="form">
+    <!-- Expects '(text)@(text).(text)' -->
+    <input
+      [(ngModel)]="email"
+      #emailControl="ngModel"
+      class="form__input"
+      name="email"
+      type="email"
+      pattern=".+@.+\..+"
+      placeholder="your email address here"
+    />
+    <p class="form__caption">
+      Note: This email address will only be used for the purposes for sending an
+      email to you.
+    </p>
+  </form>
+
+  <ng-container modalFooter>
+    <button
+      class="form__submit-btn heading-tertiary u-drop-shadow--small"
+      [ngClass]="{
+        'form__submit-btn--active': emailControl.valid && email.length > 0
+      }"
+      [disabled]="!(emailControl.valid && email.length > 0)"
+      (click)="onModalSubmit()"
+    >
+      Submit
+    </button>
+  </ng-container>
+</app-modal>
+
 <div
   class="icon-tray u-drop-shadow--large"
   [ngClass]="{ 'icon-tray__background': hasBound }"
@@ -16,7 +50,7 @@
       />
     </svg>
   </button>
-  <button class="icon u-drop-shadow--medium" (click)="clickMailIconHandler()">
+  <button class="icon u-drop-shadow--medium" (click)="onMailIconClick()">
     <svg
       viewBox="0 0 24 24"
       fill="none"

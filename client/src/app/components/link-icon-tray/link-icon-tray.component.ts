@@ -11,7 +11,18 @@ export class LinkIconTrayComponent {
 
   constructor(private mailerService: MailerService) {}
 
-  clickMailIconHandler() {
-    this.mailerService.requestMail().subscribe();
+  modalOpen: boolean = false;
+  onModalToggle() {
+    this.modalOpen = !this.modalOpen;
+  }
+
+  email: string = '';
+  onModalSubmit() {
+    this.mailerService.requestMail(this.email).subscribe();
+    this.onModalToggle();
+  }
+
+  onMailIconClick() {
+    this.onModalToggle();
   }
 }
