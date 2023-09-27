@@ -1,6 +1,7 @@
 @use "./../../../styles/main.scss" as *;
 
 .popup {
+  @include flex-center;
   height: 100vh;
   width: 100%;
   position: fixed;
@@ -14,12 +15,13 @@
   &__content {
     position: relative;
 
-    width: 40rem;
-    padding: 1.6rem;
+    width: 100rem;
+    margin: 2rem;
+    padding: 3.2rem 2.4rem;
 
     background-color: white;
     box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
-    border-radius: 3px;
+    border-radius: 2rem;
 
     overflow: hidden;
   }
@@ -27,7 +29,11 @@
   &__close {
     position: absolute;
     top: 0.24rem;
-    right: 0.4rem;
+    right: 2rem;
+    font-size: 6rem;
+    color: $color-grey-dark-1;
+
+    cursor: pointer;
 
     &:link,
     &:visited {
@@ -51,17 +57,20 @@
 }
 
 .content-header {
-  height: 1.6rem;
+  width: 100%;
+
   margin-bottom: 2rem;
 
   &__text {
-    font-weight: 800;
-    font-size: 2rem;
-    line-height: 2.4rem;
+    width: 100%;
+
+    color: $color-primary;
+    text-align: center;
+    text-shadow: 0px 0.4rem 1.2rem rgba($color-black, 0.25);
   }
 }
 
 .content__footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }

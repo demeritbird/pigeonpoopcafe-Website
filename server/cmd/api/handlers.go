@@ -10,9 +10,18 @@ func (app *application) ping(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) sendGreetingEmail(w http.ResponseWriter, r *http.Request) {
+	var requestPayload struct {
+		Email string `json:"email"`
+	}
+	err := app.readJSON(w, r, &requestPayload)
+	if err != nil {
+		app.errorJSON(w, err, http.StatusBadRequest)
+		return
+	}
+
 	msg := Message{
 		From:    "demeritbird@gmail.com",
-		To:      "lekjiewei@hotmail.sg", // TODO: Change To address based on form POST request.
+		To:      requestPayload.Email,
 		Subject: "Hello!",
 		Data:    "Let's have a chat! Feel free to reply to this email to reach me.",
 	}
