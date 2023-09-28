@@ -44,7 +44,12 @@ func main() {
 
 	//// Read from Command Line ////
 	app.Domain = "example.com"
-	flag.StringVar(&app.DSN, "dsn", "host="+os.Getenv("DATABASE_HOST")+" port="+os.Getenv("DATABASE_PORT")+" user="+os.Getenv("DATABASE_USER")+" password="+os.Getenv("DATABASE_PASS")+" dbname="+os.Getenv("DATABASE_NAME")+" sslmode=disable timezone=UTC connect_timeout=5", "Flag Description")
+	app.DSN = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable timezone=UTC connect_timeout=5",
+		os.Getenv("DATABASE_HOST"),
+		os.Getenv("DATABASE_PORT"),
+		os.Getenv("DATABASE_USER"),
+		os.Getenv("DATABASE_PASS"),
+		os.Getenv("DATABASE_NAME"))
 	flag.Parse()
 
 	// Now you can access the value of the DSN flag using the dsnFlag variable.
