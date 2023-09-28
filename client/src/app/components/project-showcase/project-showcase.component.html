@@ -3,12 +3,17 @@
     <div class="cover__image-holder u-margin-bottom--tiny">
       <img
         class="cover__image"
-        src="assets/images/example-project.png"
+        [src]="imagePath"
         alt="cover image of project"
       />
     </div>
     <div class="cover__title-holder">
-      <h2 class="cover__title showcase-title">Perchpals Platform</h2>
+      <h2
+        class="cover__title showcase-title"
+        [ngClass]="{ 'cover__title--light': isLightImage }"
+      >
+        {{ title }}
+      </h2>
     </div>
     <div class="cover__languages-grid">
       <ng-container *ngFor="let languageName of languageNameArr">
@@ -17,16 +22,13 @@
     </div>
   </div>
   <div class="description">
-    <p class="description__prompt"><span>Find out more</span> &#8599;</p>
+    <a class="description__prompt" [href]="link"
+      ><span>Find out more</span> &#8599;</a
+    >
     <div class="description__container">
       <div class="description__text-mask">
         <h6 class="description__text showcase-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip Ut enim ad minim veniam, ullamco laboris nisi ut aliquip Ut
-          enim ad minim veniam, ullamco laboris nisi ut aliquip Ut enim ad minim
-          veniam,
+          <ng-content></ng-content>
         </h6>
       </div>
     </div>

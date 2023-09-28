@@ -63,12 +63,16 @@
 
     max-width: 40rem;
     bottom: 0rem;
-    left: -0.8rem;
+    left: 1.6rem;
 
     line-height: 110%;
     color: $color-white;
 
     z-index: 2;
+
+    &--light {
+      color: $color-grey-dark-2;
+    }
   }
 
   &__languages-grid {
