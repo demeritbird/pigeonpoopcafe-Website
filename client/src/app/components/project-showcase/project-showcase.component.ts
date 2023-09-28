@@ -7,11 +7,14 @@ import { LanguagesColorKey } from '../language-tag/language-tag.component';
   styleUrls: ['./project-showcase.component.scss'],
 })
 export class ProjectShowcaseComponent {
-  // TODO: to change later
+  @Input() imagePath: string = '';
+  @Input() title: string = '';
   @Input() languageNameArr: LanguagesColorKey[] = [
     'typescript',
     'scss',
     'expressjs',
     'mongodb',
   ];
+  @Input() link: string = '';
+  @Input() isLightImage: boolean = false;
 }

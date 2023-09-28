@@ -33,15 +33,60 @@
 
       <div class="slider__screen u-margin-bottom--medium">
         <div class="slide">
-          <app-project-showcase></app-project-showcase>
+          <app-project-showcase
+            [isLightImage]="true"
+            imagePath="assets/images/projects/perchpals.png"
+            title="Perchpals Platform"
+            [languageNameArr]="[
+              'typescript',
+              'expressjs',
+              'react',
+              'mongodb',
+              'scss'
+            ]"
+            link="https://github.com/demeritbird/PerchPals-Platform"
+            >Self-engineering a MERN full-stack web application with TypeScript,
+            ReactJS, SCSS and NodeJS. Implemented essential features such as JWT
+            authentication and email services through API calls under a MVC
+            architecture. Made use of different third-party libraries such as
+            Storybook, Pug, MongoDB and Mongoose.
+          </app-project-showcase>
         </div>
 
         <div class="slide">
-          <app-project-showcase></app-project-showcase>
+          <app-project-showcase
+            [isLightImage]="false"
+            imagePath="assets/images/projects/pigeonpoopcafe.png"
+            title="Personal Website"
+            [languageNameArr]="['typescript', 'angular', 'golang', 'scss']"
+            link="https://github.com/demeritbird/pigeonpoopcafe-Website"
+            >Created a full-stack website using Angular, SCSS and Go.
+            Implemented email and API services using concurrency and Postgres.
+            Made use of UI/UX tools such as Figma to design components.
+          </app-project-showcase>
         </div>
 
         <div class="slide">
-          <app-project-showcase></app-project-showcase>
+          <app-project-showcase
+            [isLightImage]="true"
+            imagePath="assets/images/projects/markers-on-maps.png"
+            title="Markers On Maps"
+            [languageNameArr]="['typescript', 'angular']"
+            link="https://github.com/demeritbird/Markers-On-Maps--Sample"
+            >Custom code-reference to replicate functionality of interactive
+            image map libraries such as LeafletJS for more customisable use.
+          </app-project-showcase>
+        </div>
+
+        <div class="slide">
+          <app-project-showcase
+            [isLightImage]="true"
+            imagePath="assets/images/projects/eventle.png"
+            title="Eventle Platform"
+            [languageNameArr]="['java']"
+            link="https://github.com/demeritbird/Eventle-Android"
+            >A Simple Android and Firebase Mobile Application.
+          </app-project-showcase>
         </div>
       </div>
 
