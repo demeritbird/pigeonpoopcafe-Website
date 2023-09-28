@@ -1,7 +1,8 @@
 package main
 
 import (
-	"database/sql"
+	"backend/internal/repository"
+	"backend/internal/repository/dbrepo"
 	"flag"
 	"fmt"
 	"log"
@@ -17,7 +18,7 @@ const port = 8080
 type application struct {
 	Domain   string
 	DSN      string
-	DB       *sql.DB
+	DB       repository.DatabaseRepo
 	Mailer   Mail
 	Wait     *sync.WaitGroup
 	InfoLog  *log.Logger
@@ -44,7 +45,7 @@ func main() {
 
 	//// Read from Command Line ////
 	app.Domain = "example.com"
-	app.DSN = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable timezone=UTC connect_timeout=5",
+	app.DSN = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=require timezone=UTC connect_timeout=5",
 		os.Getenv("DATABASE_HOST"),
 		os.Getenv("DATABASE_PORT"),
 		os.Getenv("DATABASE_USER"),
@@ -60,8 +61,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	app.DB = conn
-	defer app.DB.Close()
+	app.DB = &dbrepo.PostgresDBRepo{DB: conn}
+	defer app.DB.Connection().Close()
 
 	// Set up mailer
 	wg := sync.WaitGroup{}
