@@ -8,6 +8,8 @@ enum LanguagesColor {
   expressjs = '#68a063',
   mongodb = '#589636',
   golang = '#29beb0',
+  java = '#B07219',
+  vba = '#867DB1',
 }
 
 export type LanguagesColorKey = keyof typeof LanguagesColor;

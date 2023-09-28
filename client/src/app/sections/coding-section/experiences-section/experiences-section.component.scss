@@ -25,7 +25,7 @@
   width: 28rem;
   height: 44rem;
   margin: 0 2rem;
-  padding: 3.2rem 2.4rem;
+  padding: 2.4rem 2.4rem;
 
   border: 0.4rem solid rgba($color-primary-dark-2, 0.6);
   border-radius: 16px;
@@ -51,6 +51,13 @@
   }
 
   &__body {
+    padding-left: 0.8rem;
     color: $color-grey-light-2;
+  }
+
+  &__text {
+    &:not(:last-child) {
+      margin-bottom: 0.8rem;
+    }
   }
 }
