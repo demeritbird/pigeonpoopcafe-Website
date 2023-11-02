@@ -1,0 +1,158 @@
+@use "./../../../../../styles/main.scss" as *;
+
+$icon-length: 4rem;
+$icon-length-altered: 4.8rem;
+$icon-box-length: 8.4rem;
+
+$color-highlight: $color-primary;
+$color-icon-normal: $color-primary;
+$color-icon-hover: $color-white;
+$color-icon-box-background: $color-grey-dark-1;
+
+::placeholder {
+  color: $color-grey-light-2;
+  opacity: 1;
+  font-weight: 300;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__input {
+    width: 80rem;
+    outline: none;
+    border: none;
+    border-bottom: 1.2px solid $color-black;
+    margin-top: 2rem;
+    padding: 1rem;
+
+    font-family: "Roboto", sans-serif;
+    font-size: 2.986rem;
+    font-weight: 400;
+    text-align: center;
+  }
+  &__caption {
+    margin: 0.4rem;
+
+    color: $color-grey-dark-1;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+  }
+
+  &__submit-btn {
+    height: 6rem;
+    width: 32rem;
+
+    margin-top: 2.8rem;
+    border: none;
+    border-radius: 1.6rem;
+    background-color: $color-grey-light-2;
+
+    color: $color-white;
+
+    &--active {
+      background-color: $color-primary;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0.8px);
+      }
+    }
+  }
+}
+
+.icon-tray {
+  @include flex-center;
+  text-align: center;
+  display: flex;
+
+  width: 72rem;
+
+  &__background {
+    border-radius: 2rem;
+    padding: 2rem;
+    background-color: rgba($color-grey-dark-1, 0.6);
+  }
+}
+
+.icon {
+  @include flex-center;
+  position: relative;
+  height: $icon-box-length;
+  width: $icon-box-length;
+
+  margin: 0 1.6rem;
+  border-radius: 30%;
+  border-color: transparent;
+
+  background-color: $color-icon-box-background;
+
+  overflow: hidden;
+  cursor: pointer;
+
+  &__vector {
+    height: $icon-length;
+    width: $icon-length;
+    &--altered {
+      height: $icon-length-altered;
+      width: $icon-length-altered;
+    }
+  }
+  & svg {
+    fill: $color-icon-normal;
+  }
+
+  &::before {
+    // This is the 'screen' that covers the background on hover
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: $color-highlight;
+    left: -110%;
+    top: 90%;
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+
+    & svg {
+      transform: scale(1.1);
+      fill: $color-icon-hover;
+    }
+
+    &::before {
+      animation: flash-icon-screen 0.7s 1 forwards;
+      transition: 1s;
+    }
+  }
+
+  &:active {
+    transform: translateY(0.8px);
+  }
+}
+
+@keyframes flash-icon-screen {
+  0% {
+    top: 90%;
+    left: -110%;
+  }
+  50% {
+    top: -30%;
+    left: 15%;
+  }
+  100% {
+    top: -10%;
+    left: -10%;
+  }
+}
