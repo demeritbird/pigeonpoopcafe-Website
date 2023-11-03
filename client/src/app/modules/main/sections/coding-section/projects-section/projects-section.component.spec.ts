@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectsSectionComponent } from './projects-section.component';
+import { ProjectShowcaseComponent } from '../../../components/project-showcase/project-showcase.component';
+import { LanguageTagComponent } from '../../../components/language-tag/language-tag.component';
 
 describe('ProjectsSectionComponent', () => {
   let component: ProjectsSectionComponent;
@@ -8,7 +10,11 @@ describe('ProjectsSectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectsSectionComponent]
+      declarations: [
+        ProjectsSectionComponent,
+        ProjectShowcaseComponent,
+        LanguageTagComponent,
+      ],
     });
     fixture = TestBed.createComponent(ProjectsSectionComponent);
     component = fixture.componentInstance;
