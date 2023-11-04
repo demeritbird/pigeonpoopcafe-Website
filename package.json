@@ -5,7 +5,9 @@
   "scripts": {
     "start:client": "npm --prefix ./client run ng -- serve --open",
     "test:client": "npm --prefix ./client run ng test",
-    "start:server": "cd server && docker-compose up -d && go run ./cmd/api",
+    "start:server": "cd server && go run ./cmd/api",
+    "test:server": "cd server && go test ./... -v",
+    "test-with-output:server": "cd server && go test ./... -coverprofile=coverage.out && go tool cover -html=coverage.out",
     "start:docker": "cd server && docker-compose up -d",
     "stop:docker": "cd server && docker-compose down"
   },
