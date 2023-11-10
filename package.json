@@ -4,7 +4,8 @@
   "description": "an angular/golang full stack for personal website",
   "scripts": {
     "start:client": "npm --prefix ./client run ng -- serve --open",
-    "test:client": "npm --prefix ./client run ng test",
+    "test:client": "npm --prefix ./client run ng test -- --browsers=ChromeHeadless --watch=false --code-coverage",
+    "test-watch:client": "npm --prefix ./client run ng test",
     "start:server": "cd server && go run ./cmd/api",
     "test:server": "cd server && go test ./... -v",
     "test-with-output:server": "cd server && go test ./... -coverprofile=coverage.out && go tool cover -html=coverage.out",
