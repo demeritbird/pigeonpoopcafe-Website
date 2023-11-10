@@ -9,6 +9,8 @@
     "start:server": "cd server && go run ./cmd/api",
     "test:server": "cd server && go test ./... -v",
     "test-with-output:server": "cd server && go test ./... -coverprofile=coverage.out && go tool cover -html=coverage.out",
+    "build:client": "npm --prefix ./client run ng build -- --configuration production",
+    "build:server": "cd server && go build -o app -ldflags \"-s -w\" ./cmd/api",
     "start:docker": "cd server && docker-compose up -d",
     "stop:docker": "cd server && docker-compose down"
   },
