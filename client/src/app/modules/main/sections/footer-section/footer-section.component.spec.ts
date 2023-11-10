@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterSectionComponent } from './footer-section.component';
+import { LinkIconTrayComponent } from '../../components/link-icon-tray/link-icon-tray.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MailerService } from '../../services/mailer.service';
 
 describe('FooterSectionComponent', () => {
   let component: FooterSectionComponent;
@@ -8,7 +11,9 @@ describe('FooterSectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FooterSectionComponent]
+      declarations: [FooterSectionComponent, LinkIconTrayComponent],
+      imports: [HttpClientTestingModule],
+      providers: [MailerService],
     });
     fixture = TestBed.createComponent(FooterSectionComponent);
     component = fixture.componentInstance;
