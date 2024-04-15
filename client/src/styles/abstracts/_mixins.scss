@@ -3,3 +3,43 @@
   justify-content: center;
   align-items: center;
 }
+
+/*
+Media Query Manager
+
+0 - 600px:     -->  Phone
+600 - 900px:   -->  iPad Portrait
+900 - 1200px:  -->  iPad Landscape
+1200 - 1800px: -->  Normal Styles
+1800px ++      -->  Big Desktop
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      @content;
+    }
+    // TODO: Insert Media Query here:
+  }
+
+  @if $breakpoint == ipad-port {
+    @media (max-width: 68em) {
+      @content;
+    }
+    // TODO: Insert Media Query here:
+  }
+
+  @if $breakpoint == ipad-land {
+    @media (max-width: 80em) {
+      @content;
+    }
+    // TODO: Insert Media Query here:
+  }
+
+  @if $breakpoint == big-desktop {
+    @media (min-width: 120em) {
+      @content;
+    }
+    // TODO: Insert Media Query here:
+  }
+}
