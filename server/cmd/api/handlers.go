@@ -27,3 +27,27 @@ func (app *application) sendGreetingEmail(w http.ResponseWriter, r *http.Request
 	}
 	app.sendEmail(msg)
 }
+
+func (app *application) authenticate(w http.ResponseWriter, r *http.Request) {
+	// read JSON payload
+
+	// validate user against database
+
+	// check password
+
+	// create a JWT user
+	newUser := jwtUser{
+		ID:       1,
+		Username: "demeritbird",
+	}
+
+	// generate tokens
+	tokens, err := app.auth.GenerateTokenPair(&newUser)
+	if err != nil {
+		app.errorJSON(w, err)
+		return
+	}
+
+	// provide logged token as string to output
+	w.Write([]byte(tokens.Token))
+}

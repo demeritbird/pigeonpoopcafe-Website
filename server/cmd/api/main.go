@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"sync"
+	"time"
 
 	"github.com/joho/godotenv"
 )
@@ -16,13 +17,18 @@ import (
 const port = 8080
 
 type application struct {
-	Domain   string
-	DSN      string
-	DB       repository.DatabaseRepo
-	Mailer   Mail
-	Wait     *sync.WaitGroup
-	InfoLog  *log.Logger
-	ErrorLog *log.Logger
+	Domain       string
+	DSN          string
+	DB           repository.DatabaseRepo
+	auth         Auth
+	JWTSecret    string
+	JWTIssuer    string
+	JWTAudience  string
+	CookieDomain string
+	Mailer       Mail
+	Wait         *sync.WaitGroup
+	InfoLog      *log.Logger
+	ErrorLog     *log.Logger
 }
 
 func main() {
@@ -53,6 +59,11 @@ func main() {
 		os.Getenv("DATABASE_NAME"),
 		os.Getenv("DATABASE_SSLMODE"),
 	)
+	flag.StringVar(&app.JWTSecret, "jwt-secret", "debugsecret", "signing secret") // TODO: change this when complete
+	flag.StringVar(&app.JWTIssuer, "jwt-issuer", "example.com", "signing issuer")
+	flag.StringVar(&app.JWTAudience, "jwt-audience", "example.com", "signing audience")
+	flag.StringVar(&app.CookieDomain, "cookie-domain", "localhost", "cookie domain")
+	flag.StringVar(&app.Domain, "domain", "localhost", "domain")
 	flag.Parse()
 
 	// Now you can access the value of the DSN flag using the dsnFlag variable.
@@ -65,6 +76,17 @@ func main() {
 	}
 	app.DB = &dbrepo.PostgresDBRepo{DB: conn}
 	defer app.DB.Connection().Close()
+
+	app.auth = Auth{
+		Issuer:        app.JWTIssuer,
+		Audience:      app.JWTAudience,
+		Secret:        app.JWTSecret,
+		TokenExpiry:   time.Minute * 15,
+		RefreshExpiry: time.Hour * 24,
+		CookiePath:    "/",
+		CookieName:    "__Host-refresh_token",
+		CookieDomain:  app.CookieDomain,
+	}
 
 	// Set up mailer
 	wg := sync.WaitGroup{}
