@@ -22,5 +22,9 @@ func (app *application) routes() http.Handler {
 	mux.Get("/logout", app.logout)
 	mux.Post("/sendGreetingEmail", app.sendGreetingEmail)
 
+	mux.Route("/user", func(mux chi.Router) {
+		mux.Use(app.authRequired)
+	})
+
 	return mux
 }
