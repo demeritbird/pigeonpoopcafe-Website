@@ -21,7 +21,7 @@ func (m *PostgresDBRepo) GetUserByID(id int) (*models.User, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), dbTimeout)
 	defer cancel()
 
-	query := `select id, email, first_name, last_name, password,
+	query := `select id, email, username, pintoken,
 		created_at, updated_at from users where id = $1`
 
 	var user models.User
@@ -45,7 +45,7 @@ func (m *PostgresDBRepo) GetUserByUsername(username string) (*models.User, error
 	ctx, cancel := context.WithTimeout(context.Background(), dbTimeout)
 	defer cancel()
 
-	query := `select id, username, pintoken,
+	query := `select id, email, username, pintoken,
 		created_at, updated_at from users where username = $1`
 
 	var user models.User

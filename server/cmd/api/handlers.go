@@ -72,6 +72,7 @@ func (app *application) login(w http.ResponseWriter, r *http.Request) {
 	}
 	refreshCookie := app.auth.GetRefreshCookie(tokens.RefreshToken)
 	http.SetCookie(w, refreshCookie)
+	app.writeJSON(w, http.StatusOK, tokens)
 }
 
 func (app *application) signup(w http.ResponseWriter, r *http.Request) {
