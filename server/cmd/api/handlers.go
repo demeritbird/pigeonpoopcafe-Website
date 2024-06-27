@@ -50,12 +50,14 @@ func (app *application) login(w http.ResponseWriter, r *http.Request) {
 	userDB, err := app.DB.GetUserByUsername(requestPayload.Username)
 	if err != nil {
 		app.errorJSON(w, errors.New("invalid credentials"), http.StatusBadRequest)
+		return
 	}
 
 	// check token
 	valid, err := userDB.PinTokenMatches(requestPayload.PinToken)
 	if err != nil || !valid {
 		app.errorJSON(w, errors.New("invalid credentials"), http.StatusBadRequest)
+		return
 	}
 
 	// create a JWT user
