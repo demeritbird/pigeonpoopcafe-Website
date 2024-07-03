@@ -1,3 +1,6 @@
+# remove all stories from public view
+client/src/app/modules/restricted/submodules/dashboard/stories
+
 server/postgres-data
 server/.env
 server/coverage.out
