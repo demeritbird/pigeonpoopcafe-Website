@@ -1,0 +1,5 @@
+<form (ngSubmit)="onLoginSubmit($event)" [formGroup]="authForm">
+  <input type="text" [formControl]="usernameInputControl" />
+  <input type="text" [formControl]="pintokenInputControl" />
+  <button>login</button>
+</form>

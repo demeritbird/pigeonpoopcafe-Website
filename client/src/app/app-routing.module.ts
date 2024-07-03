@@ -9,6 +9,7 @@ const routes: Routes = [
         (m) => m.RestrictedModule
       ),
   },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
