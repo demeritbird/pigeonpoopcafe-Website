@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BaseLayoutComponent } from './base-layout.component';
 import { DebugElement } from '@angular/core';
 import { MainModule } from '../main.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('BaseLayoutComponent', () => {
   let component: BaseLayoutComponent;
@@ -10,7 +11,7 @@ describe('BaseLayoutComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [MainModule],
+      imports: [MainModule, RouterTestingModule],
     })
       .compileComponents()
       .then(() => {
