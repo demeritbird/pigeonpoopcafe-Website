@@ -4,6 +4,7 @@ import { AuthService, LoginRequest } from './services/auth.service';
 import { Router } from '@angular/router';
 import { ApiError } from 'src/app/utils/types';
 import { SingleAlphaNumFormControl } from './controls/single-alpha-num-form-control';
+import { logger } from 'src/app/utils/logger';
 
 @Component({
   selector: 'app-auth',
@@ -11,6 +12,8 @@ import { SingleAlphaNumFormControl } from './controls/single-alpha-num-form-cont
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
+  TAG: string = '** AuthPage';
+
   @ViewChildren('pin_input') pinInputs!: QueryList<ElementRef>;
   readonly PINTOKEN_LENGTH: number = 6;
   curPinTokenIdx: number = 0; // value between 0 through PINTOKEN_LENGTH - 1
@@ -99,9 +102,21 @@ export class AuthComponent {
 
     this.authService.login(loginRequest).subscribe({
       next: (response) => {
+        logger({
+          tag: this.TAG,
+          type: 'success',
+          message: 'User has successfully logged in!',
+        });
+
         this.router.navigate(['/restricted/dashboard']);
       },
       error: (err: ApiError) => {
+        logger({
+          tag: this.TAG,
+          type: 'error',
+          message: 'User failed to log in.',
+        });
+
         if (err.status == 401) {
           this.authForm.setErrors({ credentials: true });
         } else {
