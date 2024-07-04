@@ -1,0 +1,74 @@
+@use "./../../../../../styles/main.scss" as *;
+
+.snackbar {
+  @include fill-parent;
+  position: absolute;
+  z-index: 10;
+  top: 6rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  height: 8rem;
+  width: 72rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+
+  &--success {
+    background-color: green; // TODO: change to style color
+  }
+
+  &--error {
+    background-color: red; // TODO: change to style color
+  }
+
+  &__upper-wrapper {
+    @include fill-parent;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__text {
+    @include fill-parent;
+    text-align: start;
+
+    &--success {
+      color: darkgreen; // TODO: change to style color
+    }
+
+    &--error {
+      color: darkred; // TODO: change to style color
+    }
+  }
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  height: 0.8rem;
+  width: 100%;
+
+  transition: width 0.1s;
+  transition-timing-function: ease-out;
+
+  &--success {
+    background-color: green; // TODO: change to style color
+  }
+
+  &--error {
+    background-color: red; // TODO: change to style color
+  }
+
+  z-index: 3;
+}
+
+.progress-bar-base {
+  position: absolute;
+  bottom: 0;
+  height: 0.8rem;
+  width: 100%;
+  background-color: grey; // TODO: change to style color
+
+  z-index: 2;
+}
