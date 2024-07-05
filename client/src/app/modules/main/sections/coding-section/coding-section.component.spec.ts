@@ -1,31 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { MainModule } from '../../main.module';
 import { CodingSectionComponent } from './coding-section.component';
-import { ExperiencesSectionComponent } from './experiences-section/experiences-section.component';
-import { ProjectsSectionComponent } from './projects-section/projects-section.component';
-import { ProjectShowcaseComponent } from '../../components/project-showcase/project-showcase.component';
-import { LanguageTagComponent } from '../../components/language-tag/language-tag.component';
 
 describe('CodingSectionComponent', () => {
   let component: CodingSectionComponent;
   let fixture: ComponentFixture<CodingSectionComponent>;
+  let el: DebugElement;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        CodingSectionComponent,
-        ExperiencesSectionComponent,
-        ProjectsSectionComponent,
-        ProjectShowcaseComponent,
-        LanguageTagComponent,
-      ],
-    });
-    fixture = TestBed.createComponent(CodingSectionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+      imports: [MainModule],
+    })
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(CodingSectionComponent);
+        component = fixture.componentInstance;
+        el = fixture.debugElement;
+      });
+  }));
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 });

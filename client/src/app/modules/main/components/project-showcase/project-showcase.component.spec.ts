@@ -1,22 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ProjectShowcaseComponent } from './project-showcase.component';
 import { LanguageTagComponent } from '../language-tag/language-tag.component';
+import { DebugElement } from '@angular/core';
+import { MainModule } from '../../main.module';
 
 describe('ProjectShowcaseComponent', () => {
   let component: ProjectShowcaseComponent;
   let fixture: ComponentFixture<ProjectShowcaseComponent>;
+  let el: DebugElement;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectShowcaseComponent, LanguageTagComponent]
-    });
-    fixture = TestBed.createComponent(ProjectShowcaseComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+      imports: [MainModule],
+    })
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(ProjectShowcaseComponent);
+        component = fixture.componentInstance;
+        el = fixture.debugElement;
+      });
+  }));
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 });
