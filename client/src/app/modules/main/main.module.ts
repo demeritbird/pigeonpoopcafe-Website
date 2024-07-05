@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainRoutingModule } from './main-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MainRoutingModule } from './main-routing.module';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    SharedModule,
   ],
 })
 export class MainModule {}

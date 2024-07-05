@@ -10,3 +10,5 @@ export interface ApiError extends HttpErrorResponse {
     message: any;
   };
 }
+
+export type size = 'small' | 'medium' | 'large';
