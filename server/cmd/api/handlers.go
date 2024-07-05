@@ -47,32 +47,41 @@ func (app *application) login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// validate user against database
-	user, err := app.DB.GetUserByUsername(requestPayload.Username)
+	userDB, err := app.DB.GetUserByUsername(requestPayload.Username)
 	if err != nil {
 		app.errorJSON(w, errors.New("invalid credentials"), http.StatusBadRequest)
+		return
 	}
 
 	// check token
-	valid, err := user.PinTokenMatches(requestPayload.PinToken)
+	valid, err := userDB.PinTokenMatches(requestPayload.PinToken)
 	if err != nil || !valid {
 		app.errorJSON(w, errors.New("invalid credentials"), http.StatusBadRequest)
+		return
 	}
 
 	// create a JWT user
-	newUser := jwtUser{
-		ID:       user.ID,
-		Username: user.Username,
+	loginUser := jwtUser{
+		ID:       userDB.ID,
+		Username: userDB.Username,
 	}
 
-	// generate tokens
-	tokens, err := app.auth.GenerateTokenPair(&newUser)
+	// generate tokenPair
+	tokenPair, err := app.auth.GenerateTokenPair(&loginUser)
 	if err != nil {
 		app.errorJSON(w, err)
 		return
 	}
-	refreshCookie := app.auth.GetRefreshCookie(tokens.RefreshToken)
+
+	loginUserWToken := models.CurrentUser{
+		ID:          userDB.ID,
+		Username:    userDB.Username,
+		AccessToken: tokenPair.AccessToken,
+	}
+
+	refreshCookie := app.auth.GetRefreshCookie(tokenPair.RefreshToken)
 	http.SetCookie(w, refreshCookie)
-	app.writeJSON(w, http.StatusOK, tokens)
+	app.successJSON(w, http.StatusOK, loginUserWToken)
 }
 
 func (app *application) signup(w http.ResponseWriter, r *http.Request) {
@@ -118,6 +127,11 @@ func (app *application) signup(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) refreshToken(w http.ResponseWriter, r *http.Request) {
+	if len(r.Cookies()) == 0 {
+		app.errorJSON(w, errors.New("no refresh token found for session"), http.StatusUnauthorized)
+		return
+	}
+
 	for _, cookie := range r.Cookies() {
 		if cookie.Name == app.auth.CookieName {
 			claims := &Claims{}
@@ -140,25 +154,31 @@ func (app *application) refreshToken(w http.ResponseWriter, r *http.Request) {
 			}
 
 			// attempt to make sure user still exists.
-			user, err := app.DB.GetUserByID(userID)
+			userDB, err := app.DB.GetUserByID(userID)
 			if err != nil {
 				app.errorJSON(w, errors.New("unknown user"), http.StatusUnauthorized)
 				return
 			}
 
 			refreshUser := jwtUser{
-				ID:       user.ID,
-				Username: user.Username,
+				ID:       userDB.ID,
+				Username: userDB.Username,
 			}
 
-			tokenPairs, err := app.auth.GenerateTokenPair(&refreshUser)
+			tokenPair, err := app.auth.GenerateTokenPair(&refreshUser)
 			if err != nil {
 				app.errorJSON(w, errors.New("error generating tokens"), http.StatusUnauthorized)
 				return
 			}
 
-			http.SetCookie(w, app.auth.GetRefreshCookie(tokenPairs.RefreshToken))
-			app.writeJSON(w, http.StatusOK, tokenPairs)
+			refreshUserWToken := models.CurrentUser{
+				ID:          userDB.ID,
+				Username:    userDB.Username,
+				AccessToken: tokenPair.AccessToken,
+			}
+
+			http.SetCookie(w, app.auth.GetRefreshCookie(tokenPair.RefreshToken))
+			app.successJSON(w, http.StatusOK, refreshUserWToken)
 		}
 	}
 }

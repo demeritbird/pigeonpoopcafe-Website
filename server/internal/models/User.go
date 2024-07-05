@@ -15,6 +15,12 @@ type User struct {
 	UpdatedAt string `json:"-"`
 }
 
+type CurrentUser struct {
+	ID          int    `json:"id"`
+	Username    string `json:"username"`
+	AccessToken string `json:"access_token"`
+}
+
 func (u *User) PinTokenMatches(inputToken string) (bool, error) {
 	err := bcrypt.CompareHashAndPassword([]byte(u.PinToken), []byte(inputToken))
 	if err != nil {

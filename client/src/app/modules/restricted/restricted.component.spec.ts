@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RestrictedComponent } from './restricted.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('RestrictedComponent', () => {
   let component: RestrictedComponent;
@@ -8,7 +9,8 @@ describe('RestrictedComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RestrictedComponent]
+      imports: [RouterTestingModule],
+      declarations: [RestrictedComponent],
     });
     fixture = TestBed.createComponent(RestrictedComponent);
     component = fixture.componentInstance;

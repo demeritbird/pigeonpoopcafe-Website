@@ -1,0 +1,51 @@
+@use "./../../../../../styles/main.scss" as *;
+
+$fade-heights: (
+  small: 1rem,
+  medium: 2rem,
+  large: 4rem
+);
+
+@mixin mask-fade-wrapper($fade-height: $fade-height-small) {
+  mask-image: linear-gradient(transparent, black $fade-height, black calc(100% - $fade-height), transparent 100%),
+    linear-gradient(to left, black 5px, transparent 6px); /* this prevents scroll bar from being masked. */
+  -webkit-mask-image: linear-gradient(
+      transparent,
+      black $fade-height,
+      black calc(100% - $fade-height),
+      transparent 100%
+    ),
+    linear-gradient(to left, black 5px, transparent 6px);
+  mask-size: 100% 100%;
+  mask-position:
+    0 0,
+    100% 0;
+  mask-repeat: no-repeat, no-repeat;
+}
+
+.fade-wrapper {
+  @include fill-parent;
+  background-color: transparent;
+  overflow-y: scroll;
+
+  @each $size, $fade-height in $fade-heights {
+    &--#{$size} {
+      @include mask-fade-wrapper($fade-height);
+
+      :host ::ng-deep & > :first-child {
+        margin-top: $fade-height;
+      }
+      :host ::ng-deep & > :last-child {
+        margin-bottom: $fade-height;
+      }
+    }
+  }
+}
+
+.mask-scrollbar {
+  // disables scrollbar
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

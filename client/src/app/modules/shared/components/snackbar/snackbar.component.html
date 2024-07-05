@@ -1,0 +1,44 @@
+<div
+  (mouseenter)="stopCountDown()"
+  (mouseleave)="countDown()"
+  [@openClose]="
+    snackbarService.data && snackbarService.data.show ? 'open' : 'closed'
+  "
+>
+  <div
+    class="snackbar"
+    [ngClass]="{
+      'snackbar--success':
+        snackbarService.data && snackbarService.data.type === 'success',
+      'snackbar--error':
+        snackbarService.data && snackbarService.data.type === 'error'
+    }"
+  >
+    <div class="snackbar__upper-wrapper" *ngIf="snackbarService.data">
+      <p
+        class="snackbar__text"
+        [ngClass]="{
+          'snackbar__text--success':
+            snackbarService.data && snackbarService.data.type === 'success',
+          'snackbar__text--error':
+            snackbarService.data && snackbarService.data.type === 'error'
+        }"
+      >
+        {{ snackbarService.data.message }}
+      </p>
+    </div>
+
+    <div
+      class="progress-bar"
+      [ngClass]="{
+        'progress-bar--success':
+          snackbarService.data && snackbarService.data.type === 'success',
+        'progress-bar--error':
+          snackbarService.data && snackbarService.data.type === 'error'
+      }"
+      #element
+    ></div>
+
+    <div class="progress-bar-base"></div>
+  </div>
+</div>

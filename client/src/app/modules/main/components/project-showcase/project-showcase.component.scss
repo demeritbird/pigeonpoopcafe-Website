@@ -124,22 +124,4 @@
     font-style: italic;
     line-height: 115%;
   }
-
-  &__text-mask {
-    overflow: scroll;
-    overflow-y: scroll;
-    height: 100%;
-    width: 100%;
-
-    mask-image: linear-gradient(transparent, black 4%, black 96%, transparent 100%),
-      linear-gradient(to left, black 5px, transparent 6px); /* this prevents scroll bar from being masked. */
-    -webkit-mask-image: linear-gradient(transparent, black 4%, black 96%, transparent 100%),
-      linear-gradient(to left, black 5px, transparent 6px);
-
-    mask-size: 100% 100%;
-    mask-position:
-      0 0,
-      100% 0;
-    mask-repeat: no-repeat, no-repeat;
-  }
 }

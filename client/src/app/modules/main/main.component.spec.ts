@@ -3,6 +3,7 @@ import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { MainComponent } from './main.component';
 import { DebugElement } from '@angular/core';
 import { MainModule } from './main.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -11,7 +12,7 @@ describe('MainComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [MainModule],
+      imports: [MainModule, RouterTestingModule],
     })
       .compileComponents()
       .then(() => {

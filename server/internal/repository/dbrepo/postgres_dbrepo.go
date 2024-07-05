@@ -52,6 +52,7 @@ func (m *PostgresDBRepo) GetUserByUsername(username string) (*models.User, error
 	row := m.DB.QueryRowContext(ctx, query, username)
 	err := row.Scan(
 		&user.ID,
+		&user.Email,
 		&user.Username,
 		&user.PinToken,
 		&user.CreatedAt,
