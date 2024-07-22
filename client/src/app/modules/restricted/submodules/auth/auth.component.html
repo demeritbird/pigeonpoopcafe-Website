@@ -1,19 +1,25 @@
-<form (ngSubmit)="onLoginSubmit($event)" [formGroup]="authForm">
-  <ng-container
-    *ngFor="let e of [].constructor(PINTOKEN_LENGTH); let i = index"
-  >
-    <input
-      #pin_input
-      type="text"
-      inputmode="text"
-      autocomplete="one-time-code"
-      pattern="\d{1}"
-      maxlength="1"
-      (focus)="inputOnFocus($event)"
-      (keydown)="inputOnKeyDown($event)"
-      (input)="inputOnChange($event)"
-      [formControlName]="'pintokenControl-' + (i + 1)"
-    />
-  </ng-container>
-  <button>login</button>
-</form>
+<div class="screen">
+  <ng-container *ngFor="let icon of icons"
+    ><div class="animation-icon"></div
+  ></ng-container>
+
+  <form (ngSubmit)="onLoginSubmit($event)" [formGroup]="authForm">
+    <ng-container
+      *ngFor="let e of [].constructor(PINTOKEN_LENGTH); let i = index"
+    >
+      <input
+        #pin_input
+        type="text"
+        inputmode="text"
+        autocomplete="one-time-code"
+        pattern="\d{1}"
+        maxlength="1"
+        (focus)="inputOnFocus($event)"
+        (keydown)="inputOnKeyDown($event)"
+        (input)="inputOnChange($event)"
+        [formControlName]="'pintokenControl-' + (i + 1)"
+      />
+    </ng-container>
+    <button>login</button>
+  </form>
+</div>

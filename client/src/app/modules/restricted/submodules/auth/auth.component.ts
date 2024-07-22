@@ -17,6 +17,7 @@ export class AuthComponent {
   @ViewChildren('pin_input') pinInputs!: QueryList<ElementRef>;
   readonly PINTOKEN_LENGTH: number = 6;
   curPinTokenIdx: number = 0; // value between 0 through PINTOKEN_LENGTH - 1
+  icons = Array(10);
 
   constructor(private authService: AuthService, private router: Router) {}
 
