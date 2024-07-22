@@ -5,12 +5,17 @@ import { DashboardComponent } from './dashboard.component';
 import { AlyssaStoryComponent } from './stories/alyssa-story/alyssa-story.component';
 import { WolfeStoryComponent } from './stories/wolfe-story/wolfe-story.component';
 import { DemeritbirdStoryComponent } from './stories/demeritbird-story/demeritbird-story.component';
+import { DefaultLayoutComponent } from './default-layout/default-layout.component';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
+      {
+        path: '',
+        component: DefaultLayoutComponent,
+      },
       {
         path: 'alyssa',
         component: AlyssaStoryComponent,
