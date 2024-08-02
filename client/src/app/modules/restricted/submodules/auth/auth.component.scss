@@ -82,9 +82,10 @@ $square-styles: (
   overflow: hidden;
 
   background-image: linear-gradient(to top, rgba(#1f1111, 0.8) 40%, rgba(#999, 0.2) 80%),
-    url(../../../../../assets/images/restricted-background.jpg);
+    url(../../../../../assets/images/restricted-background-4x.png);
   background-size: cover;
   background-blend-mode: color;
+  // filter: blur(100px);
 
   &::after {
     @include fill-parent;
@@ -93,8 +94,31 @@ $square-styles: (
     top: 0;
     left: 0;
 
-    background: rgba(#111, 0.65);
+    background: rgba(#111, 0.4);
     backdrop-filter: blur(4px);
+
+    z-index: 2;
+  }
+}
+
+.placeholder {
+  @include fill-parent;
+  @include abs-start;
+  background-image: linear-gradient(to top, rgba(#1f1111, 0.8) 40%, rgba(#999, 0.2) 80%),
+    url(../../../../../assets/images/restricted-background-1x.png);
+  background-size: cover;
+  background-blend-mode: color;
+  background-size: cover;
+
+  opacity: 1;
+
+  &::after {
+    @include fill-parent;
+    content: "";
+    @include abs-start;
+
+    background: rgba(#111, 0.9);
+    backdrop-filter: blur(20px);
 
     z-index: 2;
   }
@@ -103,11 +127,9 @@ $square-styles: (
 .container {
   @include fill-parent;
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-
+  @include abs-start;
   @include flex-center;
+
   flex-direction: column;
 
   z-index: 3;

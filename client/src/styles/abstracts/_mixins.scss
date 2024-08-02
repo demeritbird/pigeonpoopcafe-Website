@@ -3,6 +3,12 @@
   width: 100%;
 }
 
+@mixin abs-start {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
