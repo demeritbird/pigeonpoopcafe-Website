@@ -1,6 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ArtworkContainerComponent } from './artwork-container.component';
+
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LazyLoadImageDirective } from 'src/app/modules/shared/directives/lazy-load-image.directive';
 
 describe('ArtworkContainerComponent', () => {
   let component: ArtworkContainerComponent;
@@ -8,14 +11,15 @@ describe('ArtworkContainerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ArtworkContainerComponent]
+      declarations: [ArtworkContainerComponent, LazyLoadImageDirective],
+      imports: [HttpClientTestingModule],
     });
     fixture = TestBed.createComponent(ArtworkContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 });

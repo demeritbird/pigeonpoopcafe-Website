@@ -13,7 +13,12 @@
     <div class="about__body-image-container">
       <img
         class="about__body-image"
-        src="assets/images/about-image.png"
+        srcset="
+          assets/images/about-image/about-image-1x.png 353w,
+          assets/images/about-image/about-image-2x.png 705w
+        "
+        sizes="(max-width: 68em) 315px, (max-width: 37.5em) 201.6px, 350px"
+        src="assets/images/about-image-2x.png"
         alt="image of author"
       />
     </div>
