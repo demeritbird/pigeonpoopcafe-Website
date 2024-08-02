@@ -15,10 +15,10 @@ export class ImageLoadedDirective {
 
   @Output() loaded = new EventEmitter<void>();
 
-  constructor(private elRef: ElementRef<HTMLElement>) {}
+  constructor(private elementRef: ElementRef<HTMLElement>) {}
 
   ngOnInit(): void {
-    const element = this.elRef.nativeElement;
+    const element = this.elementRef.nativeElement;
     const style = getComputedStyle(element);
     const backgroundImage = style.backgroundImage;
 
