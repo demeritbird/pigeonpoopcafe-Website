@@ -119,6 +119,15 @@ $square-styles: (
   }
 }
 
+.container {
+  @include fill-parent;
+  content: "";
+  @include abs-start;
+  @include flex-center;
+
+  z-index: 3;
+}
+
 //// floating-icons
 @keyframes fade-out-upwards {
   0% {
