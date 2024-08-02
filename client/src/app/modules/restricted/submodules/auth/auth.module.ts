@@ -7,6 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 @NgModule({
   declarations: [AuthComponent],
-  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule, SharedModule],
+  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
 })
 export class AuthModule {}

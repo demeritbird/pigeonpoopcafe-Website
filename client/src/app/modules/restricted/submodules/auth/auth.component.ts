@@ -5,24 +5,11 @@ import { Router } from '@angular/router';
 import { ApiError } from 'src/app/utils/types';
 import { SingleAlphaNumFormControl } from './controls/single-alpha-num-form-control';
 import { logger } from 'src/app/utils/logger';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
-  animations: [
-    trigger('slideFade', [
-      state('hidden', style({ opacity: 0 })),
-      transition('* => hidden', [animate('1s ease-in-out')]),
-    ]),
-  ],
 })
 export class AuthComponent {
   TAG: string = '** AuthPage';
@@ -30,15 +17,8 @@ export class AuthComponent {
   @ViewChildren('pin_input') pinInputs!: QueryList<ElementRef>;
   readonly PINTOKEN_LENGTH: number = 6;
   curPinTokenIdx: number = 0; // value between 0 through PINTOKEN_LENGTH - 1
-  icons = Array(10);
-  imageIsLoading: boolean = true;
 
   constructor(private authService: AuthService, private router: Router) {}
-
-  imageOnLoad() {
-    // lazy loading
-    this.imageIsLoading = false;
-  }
 
   // dynamic-lengthed formgroup determined by PINTOKEN_LENGTH
   authForm = new FormGroup(

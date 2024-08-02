@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div class="screen" appImageLoaded (loaded)="imageOnLoad()">
+  <div [@slideFade]="imageIsLoading ? '' : 'hidden'" class="placeholder"></div>
+
+  <ng-container *ngFor="let icon of icons"
+    ><div class="animation-icon"></div
+  ></ng-container>
+
+  <router-outlet></router-outlet>
+</div>
