@@ -1,9 +1,10 @@
 <div class="container u-margin-bottom--medium" routerLink="./restricted">
   <img
-    class="artwork__image"
-    [srcset]="imagePathSmall + ' 884w,' + imagePathLarge + ' 1767w'"
+    class="artwork__image u-lazy-img"
+    appLazyLoad
+    [lazyImageSrcSet]="imagePathSmall + ' 884w,' + imagePathLarge + ' 1767w'"
     sizes="(max-width: 68em) 530px, (max-width: 37.5em) 294.4px, 920px"
-    [src]="'assets/images/projects/' + imagePathLarge"
+    [src]="imagePathSmall"
     alt="picture of image cluster drawn by demeritbird"
   />
   <div class="artwork__textbox">
