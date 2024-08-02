@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text">Welcome!</h1>
 
-  <form class="form" (ngSubmit)="onLoginSubmit($event)" [formGroup]="authForm">
+  <form class="form" [formGroup]="authForm">
     <ng-container
       *ngFor="let e of [].constructor(PINTOKEN_LENGTH); let i = index"
     >
@@ -19,6 +19,5 @@
         [formControlName]="'pintokenControl-' + (i + 1)"
       />
     </ng-container>
-    <button>login</button>
   </form>
 </div>

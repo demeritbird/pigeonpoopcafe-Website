@@ -64,6 +64,11 @@ export class AuthComponent {
     if (nextElementSibling && this.curPinTokenIdx < this.PINTOKEN_LENGTH) {
       nextElementSibling.focus();
     }
+
+    if (this.curPinTokenIdx == this.PINTOKEN_LENGTH) {
+      // there are 6 pins, now submit
+      this.onLoginSubmit();
+    }
   }
 
   inputOnFocus(event: FocusEvent): void {
@@ -92,9 +97,7 @@ export class AuthComponent {
     this.focusToNextInput(input);
   }
 
-  onLoginSubmit(event: Event) {
-    event.preventDefault();
-
+  onLoginSubmit() {
     const loginRequest: LoginRequest = {
       username: 'demeritbird', // TODO: change to env variable later on
       pintoken: Object.values(this.authForm.value).join(''),
