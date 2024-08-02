@@ -3,7 +3,9 @@
     <div class="cover__image-holder u-margin-bottom--tiny">
       <img
         class="cover__image"
-        [src]="imagePath"
+        [srcset]="imagePathSmall + ' 388w,' + imagePathLarge + ' 775w'"
+        sizes="(max-width: 68em) 392px, (max-width: 37.5em) 294.4px, 680px"
+        [src]="imagePathLarge"
         alt="cover image of project"
       />
     </div>

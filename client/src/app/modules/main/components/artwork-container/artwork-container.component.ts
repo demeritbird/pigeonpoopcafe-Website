@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ArtworkContainerComponent {
   @Input() caption: string = '';
-  @Input() imageName: string = '';
+  @Input() imagePathSmall: string = '';
+  @Input() imagePathLarge: string = '';
 }
