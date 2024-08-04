@@ -1,0 +1,14 @@
+@use "./../../../../../styles/main.scss" as *;
+
+:host {
+  @include fill-parent;
+  max-width: 80rem;
+}
+
+.screen {
+  @include fill-parent;
+  background-color: $color-white;
+  box-shadow:
+    -4rem 0 2rem 0 rgba($color-black, 0.1),
+    4rem 0 2rem 0 rgba($color-black, 0.1);
+}
