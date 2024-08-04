@@ -23,9 +23,16 @@
 
     opacity: 0.2;
     background-color: $color-black;
-    background-image: url(../../../../../assets/images/green-fern-background-bottom-5x.png);
+    background-image: url(../../../../../assets/images/green-fern/green-fern-background-top-5x.png);
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include respond(ipad-land) {
+      background-image: url(../../../../../assets/images/green-fern/green-fern-background-top-2x.png);
+    }
+    @include respond(phone) {
+      background-image: url(../../../../../assets/images/green-fern/green-fern-background-top-1x.png);
+    }
   }
 }
 

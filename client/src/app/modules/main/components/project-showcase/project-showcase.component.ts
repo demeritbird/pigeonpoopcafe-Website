@@ -7,7 +7,8 @@ import { LanguagesColorKey } from '../language-tag/language-tag.component';
   styleUrls: ['./project-showcase.component.scss'],
 })
 export class ProjectShowcaseComponent {
-  @Input() imagePath: string = '';
+  @Input() imagePathSmall: string = '';
+  @Input() imagePathLarge: string = '';
   @Input() title: string = '';
   @Input() languageNameArr: LanguagesColorKey[] = [
     'typescript',
