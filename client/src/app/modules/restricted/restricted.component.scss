@@ -1,5 +1,6 @@
 @use "./../../../styles/main.scss" as *;
 
+$screen-ease-transition: all 0.5s cubic-bezier(0, 0.47, 1, 1);
 $square-styles: (
   1: (
     width: 15rem,
@@ -82,6 +83,9 @@ $square-styles: (
   background-size: cover;
   background-blend-mode: color;
 
+  transition: $screen-ease-transition;
+  transform-origin: center;
+
   &::after {
     @include fill-parent;
     content: "";
@@ -92,7 +96,17 @@ $square-styles: (
     background: rgba(#111, 0.4);
     backdrop-filter: blur(4px);
 
+    transition: $screen-ease-transition;
+
     z-index: 2;
+  }
+
+  &--enlarged {
+    transform: scale(1.1);
+    &::after {
+      background: rgba(#111, 0.85);
+      backdrop-filter: blur(12px);
+    }
   }
 }
 
