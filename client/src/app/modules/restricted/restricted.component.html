@@ -1,15 +1,13 @@
-<div
-  class="screen"
-  [ngClass]="{ 'screen--enlarged': isOnRestrictedPage }"
-  appImageLoaded
-  (loaded)="imageOnLoad()"
->
-  <div [@slideFade]="imageIsLoading ? '' : 'hidden'" class="placeholder"></div>
-</div>
-<ng-container *ngFor="let icon of icons"
-  ><div class="animation-icon"></div
-></ng-container>
+<div class="screen" [ngClass]="{ 'screen--enlarged': isOnRestrictedPage }">
+  <div class="background-wrapper" appImageLoaded (loaded)="imageOnLoad()"></div>
 
-<div class="container">
-  <router-outlet></router-outlet>
+  <div [@slideFade]="imageIsLoading ? '' : 'hidden'" class="placeholder"></div>
+
+  <ng-container *ngFor="let icon of icons"
+    ><div class="animation-icon"></div
+  ></ng-container>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>
