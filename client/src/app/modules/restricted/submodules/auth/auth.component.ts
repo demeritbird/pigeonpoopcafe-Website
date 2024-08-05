@@ -71,7 +71,7 @@ export class AuthComponent {
     }
   }
 
-  inputOnFocus(event: FocusEvent): void {
+  inputOnFocus(): void {
     this.pinInputs
       .toArray()
       [Math.min(Math.max(this.curPinTokenIdx, 0), 5)].nativeElement.focus();
@@ -126,7 +126,18 @@ export class AuthComponent {
           this.authForm.setErrors({ unknownError: true });
         }
 
+        this.pinInputs.forEach((pinInput) => {
+          pinInput.nativeElement.classList.add('form__input--error');
+        });
+        setTimeout(() => {
+          this.pinInputs.forEach((pinInput) => {
+            pinInput.nativeElement.classList.remove('form__input--error');
+          });
+        }, 500);
+
         this.authForm.reset();
+        this.curPinTokenIdx = 0;
+        this.inputOnFocus();
       },
     });
   }

@@ -12,18 +12,54 @@
   & :not(:last-child) {
     margin-right: 1.6rem;
   }
-}
 
-.input {
-  border: rgb(#eee, 0.8) 0.4rem solid;
-  border-radius: 0.4rem;
-  outline: none;
-  background-color: rgb(#fff, 0.2);
+  &__input {
+    border: rgb(#eee, 0.8) 0.4rem solid;
+    border-radius: 0.4rem;
+    outline: none;
+    background-color: rgb(#fff, 0.08);
 
-  height: 14rem;
-  width: 10rem;
+    height: 14rem;
+    width: 10rem;
+
+    &--fill {
+      background-color: rgb(#fff, 0.2);
+    }
+
+    &--error {
+      animation:
+        error-shake-animation 0.5s ease,
+        error-flash-animation 0.5s ease;
+    }
+  }
 }
 
 .text {
   text-align: center;
+}
+
+@keyframes error-shake-animation {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-1rem);
+  }
+  40%,
+  80% {
+    transform: translateX(1rem);
+  }
+}
+
+@keyframes error-flash-animation {
+  0%,
+  100% {
+    background-color: initial;
+  }
+  50% {
+    border: rgba(255, 83, 83, 0.8) 0.4rem solid;
+    background-color: rgba(255, 83, 83, 0.578);
+  }
 }
