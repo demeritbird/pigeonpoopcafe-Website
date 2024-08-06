@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RestrictedComponent } from './restricted.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('RestrictedComponent', () => {
   let component: RestrictedComponent;
@@ -10,7 +11,7 @@ describe('RestrictedComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, BrowserAnimationsModule],
+      imports: [RouterTestingModule, HttpClientModule, BrowserAnimationsModule],
       declarations: [RestrictedComponent],
     });
     fixture = TestBed.createComponent(RestrictedComponent);
