@@ -103,6 +103,10 @@ export class AuthComponent {
       pintoken: Object.values(this.authForm.value).join(''),
     };
 
+    this.pinInputs.forEach((pinInput) => {
+      pinInput.nativeElement.classList.add('form__input--loading');
+    });
+
     this.authService.login(loginRequest).subscribe({
       next: (response) => {
         logger({
@@ -118,6 +122,10 @@ export class AuthComponent {
           tag: this.TAG,
           type: 'error',
           message: 'User failed to log in.',
+        });
+
+        this.pinInputs.forEach((pinInput) => {
+          pinInput.nativeElement.classList.remove('form__input--loading');
         });
 
         if (err.status == 401) {
