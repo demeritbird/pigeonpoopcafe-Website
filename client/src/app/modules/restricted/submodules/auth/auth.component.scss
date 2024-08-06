@@ -1,29 +1,106 @@
 @use "./../../../../../styles/main.scss" as *;
 
+$input-number: 6;
+
 .container {
   flex-direction: column;
 
-  & :not(:last-child) {
+  & > :not(:last-child) {
     margin-bottom: 4.8rem;
   }
 }
 
 .form {
-  & :not(:last-child) {
-    margin-right: 1.6rem;
-  }
-}
-
-.input {
-  border: rgb(#eee, 0.8) 0.4rem solid;
-  border-radius: 0.4rem;
-  outline: none;
-  background-color: rgb(#fff, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
 
   height: 14rem;
-  width: 10rem;
+  width: 68rem;
+
+  &__input {
+    border: rgb(#eee, 0.8) 0.4rem solid;
+    border-radius: 0.4rem;
+    outline: none;
+    background-color: rgb(#fff, 0.08);
+
+    height: 14rem;
+    width: 10rem;
+
+    &--fill {
+      background-color: rgb(#fff, 0.2);
+    }
+
+    &--loading {
+      height: 3.2rem;
+      width: 3.2rem;
+      border-width: 3.2rem;
+      border-radius: 50%;
+      color: transparent;
+
+      transition: all 0.1s ease;
+
+      @for $i from 1 through $input-number {
+        &:nth-of-type(#{$i}) {
+          animation-name: bounce-ball-animation;
+          animation-duration: #{multiply($input-number, 0.2)}s;
+          animation-iteration-count: infinite;
+          animation-delay: #{multiply($i, 0.2) + 0.3}s;
+        }
+      }
+    }
+
+    &--error {
+      animation:
+        error-shake-animation 0.5s ease,
+        error-flash-animation 0.5s ease;
+    }
+  }
 }
 
 .text {
   text-align: center;
+}
+
+@keyframes bounce-ball-animation {
+  0%,
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-2rem);
+    background-color: rgba(255, 83, 83, 0.8);
+  }
+  40% {
+    transform: translateY(0.5rem);
+  }
+}
+
+@keyframes error-shake-animation {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-1rem);
+  }
+  40%,
+  80% {
+    transform: translateX(1rem);
+  }
+}
+
+@keyframes error-flash-animation {
+  0%,
+  100% {
+    background-color: initial;
+  }
+  50% {
+    border: rgba(255, 83, 83, 0.8) 0.4rem solid;
+    background-color: rgba(255, 83, 83, 0.578);
+  }
 }

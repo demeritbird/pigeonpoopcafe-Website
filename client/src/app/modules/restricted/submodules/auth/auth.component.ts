@@ -71,7 +71,7 @@ export class AuthComponent {
     }
   }
 
-  inputOnFocus(event: FocusEvent): void {
+  inputOnFocus(): void {
     this.pinInputs
       .toArray()
       [Math.min(Math.max(this.curPinTokenIdx, 0), 5)].nativeElement.focus();
@@ -103,6 +103,10 @@ export class AuthComponent {
       pintoken: Object.values(this.authForm.value).join(''),
     };
 
+    this.pinInputs.forEach((pinInput) => {
+      pinInput.nativeElement.classList.add('form__input--loading');
+    });
+
     this.authService.login(loginRequest).subscribe({
       next: (response) => {
         logger({
@@ -120,13 +124,28 @@ export class AuthComponent {
           message: 'User failed to log in.',
         });
 
+        this.pinInputs.forEach((pinInput) => {
+          pinInput.nativeElement.classList.remove('form__input--loading');
+        });
+
         if (err.status == 401) {
           this.authForm.setErrors({ credentials: true });
         } else {
           this.authForm.setErrors({ unknownError: true });
         }
 
+        this.pinInputs.forEach((pinInput) => {
+          pinInput.nativeElement.classList.add('form__input--error');
+        });
+        setTimeout(() => {
+          this.pinInputs.forEach((pinInput) => {
+            pinInput.nativeElement.classList.remove('form__input--error');
+          });
+        }, 500);
+
         this.authForm.reset();
+        this.curPinTokenIdx = 0;
+        this.inputOnFocus();
       },
     });
   }

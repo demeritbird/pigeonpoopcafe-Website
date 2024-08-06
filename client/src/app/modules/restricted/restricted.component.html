@@ -1,4 +1,6 @@
-<div class="screen" appImageLoaded (loaded)="imageOnLoad()">
+<div class="screen" [ngClass]="{ 'screen--enlarged': isOnRestrictedPage }">
+  <div class="background-wrapper" appImageLoaded (loaded)="imageOnLoad()"></div>
+
   <div [@slideFade]="imageIsLoading ? '' : 'hidden'" class="placeholder"></div>
 
   <ng-container *ngFor="let icon of icons"
